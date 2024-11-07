@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>By Felicia Gifts Apps</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin-bottom: 0;  /* Removes bottom margin from h1 */
+        }
+        h2 {
+            margin-top: 5px;   /* Adds small top margin to h2 */
+            color: #666;       /* Slightly muted color for subtitle */
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 4px;
+            background-color: #e8f5e9;
+            display: none;
+        }
+        .markup-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        .markup-table th, .markup-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .markup-table th {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>By Felicia Gifts</h1>
+        <h2>Product Markup App</h2>
+        
+        <div class="input-group">
+            <label for="cost">Enter Cost ($):</label>
+            <input type="number" id="cost" step="0.01" min="0" placeholder="Enter cost">
+        </div>
+        
+        <button onclick="calculateMarkup()">Calculate Price</button>
+        
+        <div id="result" class="result">
+            <p>Original Cost: $<span id="originalCost">0.00</span></p>
+            <p>Markup Percentage: <span id="markupPercent">0</span>%</p>
+            <p>Final Price: $<span id="finalPrice">0.00</span></p>
+        </div>
+
+        <table class="markup-table">
+            <tr>
+                <th>Cost Range ($)</th>
+                <th>Markup %</th>
+            </tr>
+            <tr>
+                <td>0 - 3.99</td>
+                <td>100%</td>
+            </tr>
+            <tr>
+                <td>4.00 - 9.99</td>
+                <td>75%</td>
+            </tr>
+            <tr>
+                <td>10.00 - 19.99</td>
+                <td>50%</td>
+            </tr>
+            <tr>
+                <td>20.00 - 49.99</td>
+                <td>25%</td>
+            </tr>
+            <tr>
+                <td>50.00 - 74.99</td>
+                <td>20%</td>
+            </tr>
+            <tr>
+                <td>75.00 - 99.99</td>
+                <td>15%</td>
+            </tr>
+            <tr>
+                <td>100.00+</td>
+                <td>10%</td>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        function calculateMarkup() {
+            const costInput = document.getElementById('cost').value;
+            const cost = parseFloat(costInput);
+            
+            if (isNaN(cost) || cost < 0) {
+                alert('Please enter a valid cost');
+                return;
+            }
+
+            let markupPercent;
+            if (cost < 4) {
+                markupPercent = 100;
+            } else if (cost < 10) {
+                markupPercent = 75;
+            } else if (cost < 20) {
+                markupPercent = 50;
+            } else if (cost < 50) {
+                markupPercent = 25;
+            } else if (cost < 75) {
+                markupPercent = 20;
+            } else if (cost < 100) {
+                markupPercent = 15;
+            } else {
+                markupPercent = 10;
+            }
+
+            const finalPrice = cost * (1 + markupPercent/100);
+            
+            document.getElementById('result').style.display = 'block';
+            document.getElementById('originalCost').textContent = cost.toFixed(2);
+            document.getElementById('markupPercent').textContent = markupPercent;
+            document.getElementById('finalPrice').textContent = finalPrice.toFixed(2);
+        }
+    </script>
+</body>
+</html>
