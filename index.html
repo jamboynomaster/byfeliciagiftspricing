@@ -1,75 +1,129 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>By Felicia Gifts Apps</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             font-family: Arial, sans-serif;
             max-width: 600px;
-            margin: 40px auto;
-            padding: 20px;
+            margin: 0 auto;
+            padding: 15px;
             background-color: #f5f5f5;
         }
+
         .calculator {
             background: white;
-            padding: 20px;
+            padding: 15px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: 100%;
         }
+
         h1 {
-            margin-bottom: 0;  /* Removes bottom margin from h1 */
+            margin-bottom: 0;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            text-align: center;
         }
+
         h2 {
-            margin-top: 5px;   /* Adds small top margin to h2 */
-            color: #666;       /* Slightly muted color for subtitle */
+            margin-top: 5px;
+            color: #666;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            text-align: center;
         }
+
         .input-group {
             margin-bottom: 20px;
         }
+
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            font-size: 1rem;
         }
+
         input {
             width: 100%;
-            padding: 8px;
+            padding: 12px;
             border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 16px;
+            -webkit-appearance: none;
+            appearance: none;
         }
+
         button {
             background-color: #4CAF50;
             color: white;
-            padding: 10px 20px;
+            padding: 15px 20px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
             width: 100%;
+            touch-action: manipulation;
         }
+
         button:hover {
             background-color: #45a049;
         }
+
+        button:active {
+            background-color: #3d8b40;
+        }
+
         .result {
             margin-top: 20px;
             padding: 15px;
             border-radius: 4px;
             background-color: #e8f5e9;
             display: none;
+            font-size: 1rem;
         }
+
         .markup-table {
             width: 100%;
             margin-top: 20px;
             border-collapse: collapse;
+            font-size: 0.9rem;
         }
+
         .markup-table th, .markup-table td {
             border: 1px solid #ddd;
             padding: 8px;
             text-align: left;
         }
+
         .markup-table th {
             background-color: #f5f5f5;
+        }
+
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+
+            .calculator {
+                padding: 12px;
+            }
+
+            .markup-table {
+                font-size: 0.8rem;
+            }
+
+            .markup-table th, .markup-table td {
+                padding: 6px;
+            }
+
+            input {
+                font-size: 16px;  /* Prevents iOS zoom on focus */
+            }
         }
     </style>
 </head>
